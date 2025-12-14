@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="p-6 bg-amber-300 space-y-6">
+
+  <!-- Header -->
+  <h1 class="text-2xl font-semibold">Dashboard</h1>
+
+  <!-- Overview Widgets -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+    <!-- Attendance Summary -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="font-medium">Today's Attendance</h2>
+      <div id="attendance-summary" class="mt-2 text-sm">
+        Loading...
+      </div>
+    </div>
+
+    <!-- Active Cameras -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="font-medium">Active Cameras</h2>
+      <div id="camera-status" class="mt-2 text-sm">
+        Loading...
+      </div>
+    </div>
+
+    <!-- System Health -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="font-medium">System Health</h2>
+      <div id="system-health" class="mt-2 text-sm">
+        Loading...
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Alerts + Trend -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    <!-- Alerts -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="font-medium">Recent Alerts</h2>
+      <ul id="alerts-list" class="mt-2 text-sm space-y-1"></ul>
+    </div>
+
+    <!-- Weekly Trend -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="font-medium">Weekly Attendance</h2>
+      <canvas id="attendance-chart" height="150"></canvas>
+    </div>
+
+  </div>
+  <div class="mt-8">
+    <h2 class="text-xl font-semibold mb-4">Quick Actions</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+
+      
+      <a href="#" class="bg-blue-600 text-white rounded-xl p-4 text-center hover:bg-blue-700 transition">
+        View Attendance
+      </a>
+
+      
+      <a href="#" class="bg-green-600 text-white rounded-xl p-4 text-center hover:bg-green-700 transition">
+        Add Person
+      </a>
+
+      
+      <a href="#" class="bg-purple-600 text-white rounded-xl p-4 text-center hover:bg-purple-700 transition">
+        Camera Status
+      </a>
+
+      
+      <a href="#" class="bg-yellow-500 text-white rounded-xl p-4 text-center hover:bg-yellow-600 transition">
+        Export Report
+      </a>
+
+      
+      <a href="#" class="bg-red-600 text-white rounded-xl p-4 text-center hover:bg-red-700 transition">
+        System Alerts
+      </a>
+
+    </div>
+  </div>
+
+
+</div>
+
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}

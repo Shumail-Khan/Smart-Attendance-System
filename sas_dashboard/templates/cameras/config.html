@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-xl shadow">
+  <h1 class="text-xl font-bold mb-4">
+    Configure Camera: {{ camera.camera_id }}
+  </h1>
+
+  <form method="POST" class="space-y-4">
+    {% csrf_token %}
+
+    <input name="ip_address" placeholder="IP Address"
+           class="w-full border p-2"
+           value="{{ params.ip_address }}">
+
+    <input name="username" placeholder="Username"
+           class="w-full border p-2"
+           value="{{ params.username }}">
+
+    <input name="password" type="password" placeholder="Password"
+           class="w-full border p-2"
+           value="{{ params.password }}">
+
+    <select name="cam_type" class="w-full border p-2">
+      <option value="PTZ">PTZ</option>
+      <option value="Fixed">Fixed</option>
+    </select>
+
+    <hr>
+
+    <label>FR Confidence Threshold</label>
+    <input type="range" min="0" max="1" step="0.01"
+           name="fr_conf_thresh" value="{{ params.fr_conf_thresh }}">
+
+    <label>FR IOU Threshold</label>
+    <input type="range" min="0" max="1" step="0.01"
+           name="fr_iou_thresh" value="{{ params.fr_iou_thresh }}">
+
+    <label>Recognition Threshold</label>
+    <input type="range" min="0" max="1" step="0.01"
+           name="recognition_t" value="{{ params.recognition_t }}">
+
+    <label>Min Frame Count</label>
+    <input type="number" name="fr_min_frame_count"
+           class="w-full border p-2"
+           value="{{ params.fr_min_frame_count }}">
+
+    <button class="bg-blue-600 text-white px-4 py-2 rounded">
+      Save Configuration
+    </button>
+  </form>
+</div>
+
+{% endblock %}

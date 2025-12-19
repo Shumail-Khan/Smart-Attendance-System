@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="p-6 grid grid-cols-3 gap-6">
+
+  <!-- Profile -->
+  <div class="bg-white rounded-xl shadow p-6 text-center">
+    <img src="/media/person_photos/{{ person.pid }}.jpg"
+         class="mx-auto h-32 w-32 rounded-full object-cover"
+         onerror="this.src='/static/img/avatar.png'">
+
+    <h2 class="mt-4 text-xl font-bold">{{ person.person_name }}</h2>
+    <p class="text-gray-500">{{ person.person_designation }}</p>
+  </div>
+
+  <!-- Info -->
+  <div class="col-span-2 bg-white rounded-xl shadow p-6">
+    <h3 class="font-semibold mb-4">Personal Information</h3>
+
+    <div class="grid grid-cols-2 gap-4 text-sm">
+      <p><strong>NIC:</strong> {{ person.person_nic }}</p>
+      <p><strong>Father:</strong> {{ person.person_father }}</p>
+      <p><strong>Category:</strong> {{ person.person_cat }}</p>
+      <p><strong>Created:</strong> {{ person.created_at }}</p>
+    </div>
+
+    <hr class="my-6">
+
+    <h3 class="font-semibold mb-2">Face Enrollment</h3>
+    {% if person.person_embedding %}
+      <span class="text-green-600 font-bold">✓ Enrolled</span>
+    {% else %}
+      <span class="text-red-600 font-bold">✗ Not Enrolled</span>
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock %}

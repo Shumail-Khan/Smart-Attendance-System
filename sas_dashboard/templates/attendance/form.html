@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="p-6 max-w-xl mx-auto bg-white rounded-xl shadow">
+  <h1 class="text-xl font-bold mb-4">Manual Attendance Entry</h1>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <select name="person" class="w-full border p-2 mb-2">
+      {% for p in persons %}
+        <option value="{{ p.pid }}">{{ p.person_name }}</option>
+      {% endfor %}
+    </select>
+
+    <select name="camera" class="w-full border p-2 mb-2">
+      {% for c in cameras %}
+        <option value="{{ c.camera_id }}">{{ c.location }}</option>
+      {% endfor %}
+    </select>
+
+    <input type="datetime-local" name="timestamp" class="w-full border p-2 mb-2">
+
+    <select name="attendance_type" class="w-full border p-2 mb-2">
+      <option value="IN">IN</option>
+      <option value="OUT">OUT</option>
+    </select>
+
+    <button class="bg-blue-600 text-white px-4 py-2 rounded">
+      Save
+    </button>
+  </form>
+</div>
+{% endblock %}

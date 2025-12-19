@@ -5,6 +5,13 @@ from django.conf import settings
 
 # PERSONS
 from apps.persons.views import PersonViewSet
+from apps.persons.views import (
+    person_list_view,
+    person_detail_view,
+    person_create_view,
+    person_edit_view,
+)
+
 
 # CAMERAS
 from apps.cameras.views import (
@@ -13,9 +20,19 @@ from apps.cameras.views import (
     CameraPresetViewSet,
     CamPcConfViewSet,
 )
+from apps.cameras.views import (
+    camera_grid_view,
+    camera_detail_view,
+    camera_config_view,
+)
 
 # ATTENDANCE
 from apps.attendance.views import AttendanceRecordViewSet, AttendanceScheduleViewSet
+from apps.attendance.views import (
+    attendance_list_view,
+    attendance_create_view,
+    attendance_export_view,
+)
 
 # MONITORING
 from apps.monitoring.views import (
@@ -69,6 +86,16 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(router.urls)),
     path("", dashboard, name="dashboard"),
+    path("persons/", person_list_view, name="person_list"),
+    path("persons/add/", person_create_view, name="person_add"),
+    path("persons/<str:pid>/", person_detail_view, name="person_detail"),
+    path("persons/<str:pid>/edit/", person_edit_view, name="person_edit"),
+    path("cameras/", camera_grid_view, name="camera_grid"),
+    path("cameras/<str:camera_id>/", camera_detail_view, name="camera_detail"),
+    path("cameras/<str:camera_id>/config/", camera_config_view, name="camera_config"),
+    path("attendance/", attendance_list_view, name="attendance_list"),
+    path("attendance/add/", attendance_create_view, name="attendance_add"),
+    path("attendance/export/", attendance_export_view, name="attendance_export"),
 ]
 if settings.DEBUG:
     # Include django_browser_reload URLs only in DEBUG mode

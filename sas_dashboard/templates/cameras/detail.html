@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="p-6 grid grid-cols-3 gap-6">
+
+  <!-- Live Feed -->
+  <div class="col-span-2 bg-black rounded-xl h-96 flex items-center justify-center text-gray-400">
+    Live Video Feed
+  </div>
+
+  <!-- Metrics -->
+  <div class="bg-white rounded-xl shadow p-4">
+    <h3 class="font-semibold mb-3">Metrics</h3>
+    <p>FPS: —</p>
+    <p>Detection Time: —</p>
+    <p>Recognition Time: —</p>
+  </div>
+
+</div>
+
+{% endblock %}
